@@ -127,7 +127,7 @@ export default function Hero() {
               </MagneticButton>
 
               <MagneticButton
-                href="en it.pdf"
+                href="Haddach_Soulaimane_CV.pdf"
                 className="btn-secondary group"
               >
                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
