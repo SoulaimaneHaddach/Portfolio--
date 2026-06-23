@@ -3,11 +3,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Music, Play, Pause, Volume2, VolumeX, SkipForward, SkipBack } from "lucide-react";
 
-// Music playlist - add your tracks here
+// Music playlist
 const TRACKS = [
   { name: "Velvet Sutra", src: "/music/Velvet Sutra - Ruck P.mp3" },
   { name: "Keep Going - Swørn", src: "/music/Keep Going - Swørn.mp3" },
-  { name: "X-plosaó - Rais Shaikh", src: "/music/X-plosaó - Rais Shaikh.mp3" },
 ];
 
 const STORAGE_KEYS = {
@@ -41,7 +40,7 @@ export default function BackgroundMusic() {
   // Initialize audio element and load saved preferences
   useEffect(() => {
     const audio = new Audio(TRACKS[currentTrack].src);
-    audio.loop = false; // Don't loop, we'll handle track changes
+    audio.loop = false;
     audio.preload = "auto";
     audioRef.current = audio;
 
@@ -89,7 +88,7 @@ export default function BackgroundMusic() {
 
     const onCanPlay = () => setReady(true);
     const onError = () => setError("Audio file not found");
-    const onEnded = () => nextTrack(); // Auto-play next track when current ends
+    const onEnded = () => nextTrack();
 
     audio.addEventListener("canplay", onCanPlay);
     audio.addEventListener("error", onError);
@@ -102,7 +101,7 @@ export default function BackgroundMusic() {
       audio.removeEventListener("ended", onEnded);
       audioRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, [currentTrack]);  const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { motion } from 'framer-motion';
@@ -10,7 +9,7 @@ import RevealText from './RevealText';
 
 export default function Hero() {
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/solaymane403', label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white' },
+    { icon: Github, href: 'https://github.com/SoulaimaneHaddach', label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/soulaiman-haddash-06a15b387/', label: 'LinkedIn', color: 'hover:text-blue-600' },
     { icon: Mail, href: 'mailto:soulaimanok@gmail.com', label: 'Email', color: 'hover:text-red-500' },
   ];
