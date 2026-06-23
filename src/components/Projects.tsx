@@ -78,7 +78,7 @@ export default function Projects() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
+            Sample Work
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             A showcase of my recent work and side projects
@@ -310,7 +310,7 @@ export default function Projects() {
             </div>
             
             <a
-              href="https://github.com/solaymane403"
+              href="https://github.com/SoulaimaneHaddach"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"

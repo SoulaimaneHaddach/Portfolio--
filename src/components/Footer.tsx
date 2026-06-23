@@ -6,7 +6,7 @@ export default function Footer() {
   const socialLinks = [
     { 
       icon: Github, 
-      href: 'https://github.com/solaymane403', 
+      href: 'https://github.com/SoulaimaneHaddach', 
       label: 'GitHub',
       gradient: 'from-gray-600 to-gray-800'
     },
