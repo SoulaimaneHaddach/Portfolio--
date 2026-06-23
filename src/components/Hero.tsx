@@ -51,7 +51,7 @@ export default function Hero() {
             {/* Main Heading */}
             <div className="space-y-4">
               <RevealText
-                text="Hi, I'm"
+                text="Hi, I&apos;m"
                 className="text-2xl md:text-3xl font-medium text-gray-600 dark:text-gray-400"
               />
               
@@ -118,7 +118,7 @@ export default function Hero() {
                 className="btn-primary group"
               >
                 <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                Let's Talk
+                Let&apos;s Talk
                 <motion.span
                   className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-20 rounded-lg"
                   initial={false}
