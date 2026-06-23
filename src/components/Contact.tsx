@@ -155,7 +155,7 @@ export default function Contact() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4 transform transition-all hover:scale-105">
               <Zap className="w-4 h-4 text-purple-600 dark:text-purple-400" />
               <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                Let's Connect
+                Let&apos;s Connect
               </span>
             </div>
             
@@ -175,11 +175,11 @@ export default function Contact() {
                   <div className="flex items-center gap-3 mb-4">
                     <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                      Let's Talk
+                        Let&apos;s Talk
                     </h3>
                   </div>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    I'm always interested in hearing about new projects and opportunities. 
+                    I&apos;m always interested in hearing about new projects and opportunities. 
                     Whether you have a question or just want to say hi, feel free to reach out!
                   </p>
                 </div>
@@ -380,9 +380,9 @@ export default function Contact() {
 
                 {status === 'success' && (
                   <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl animate-pulse">
-                    <p className="text-green-700 dark:text-green-400 text-center text-sm font-medium flex items-center justify-center gap-2">
+                      <p className="text-green-700 dark:text-green-400 text-center text-sm font-medium flex items-center justify-center gap-2">
                       <CheckCircle className="w-5 h-5" />
-                      Thank you! I'll get back to you soon.
+                      Thank you! I&apos;ll get back to you soon.
                     </p>
                   </div>
                 )}

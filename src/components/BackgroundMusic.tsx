@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Music, Play, Pause, Volume2, VolumeX, SkipForward, SkipBack } from "lucide-react";
 
 // Music playlist
@@ -25,17 +25,21 @@ export default function BackgroundMusic() {
   const [error, setError] = useState<string | null>(null);
   const [currentTrack, setCurrentTrack] = useState(0);
 
-  const nextTrack = () => {
-    const next = (currentTrack + 1) % TRACKS.length;
-    setCurrentTrack(next);
-    localStorage.setItem(STORAGE_KEYS.currentTrack, String(next));
-  };
+  const nextTrack = useCallback(() => {
+    setCurrentTrack((prev) => {
+      const next = (prev + 1) % TRACKS.length;
+      try { localStorage.setItem(STORAGE_KEYS.currentTrack, String(next)); } catch {}
+      return next;
+    });
+  }, []);
 
-  const prevTrack = () => {
-    const prev = (currentTrack - 1 + TRACKS.length) % TRACKS.length;
-    setCurrentTrack(prev);
-    localStorage.setItem(STORAGE_KEYS.currentTrack, String(prev));
-  };
+  const prevTrack = useCallback(() => {
+    setCurrentTrack((prev) => {
+      const p = (prev - 1 + TRACKS.length) % TRACKS.length;
+      try { localStorage.setItem(STORAGE_KEYS.currentTrack, String(p)); } catch {}
+      return p;
+    });
+  }, []);
 
   // Initialize audio element and load saved preferences
   useEffect(() => {
