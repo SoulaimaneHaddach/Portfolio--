@@ -106,7 +106,9 @@ export default function BackgroundMusic() {
       audioRef.current = null;
     };
 
-  }, [currentTrack]);  const togglePlay = () => {
+  }, [currentTrack, nextTrack]);
+
+  const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
     setError(null);

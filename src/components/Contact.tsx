@@ -163,7 +163,7 @@ export default function Contact() {
               Get In Touch
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Have a project in mind? Let's work together to bring your ideas to life
+              Have a project in mind? Let&apos;s work together to bring your ideas to life
             </p>
           </div>
 
