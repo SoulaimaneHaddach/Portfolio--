@@ -1,23 +1,24 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, MessageCircle, Sparkles, Code2, Rocket } from 'lucide-react';
+import { Github, Linkedin, Mail, Download, MessageCircle, Sparkles, Code2, Rocket, Instagram } from 'lucide-react';
 import TypingEffect from './TypingEffect';
 import MagneticButton from './MagneticButton';
 import TiltCard from './TiltCard';
 import RevealText from './RevealText';
 
 export default function Hero() {
-  const socialLinks = [
+const socialLinks = [
     { icon: Github, href: 'https://github.com/SoulaimaneHaddach', label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/soulaiman-haddash-06a15b387/', label: 'LinkedIn', color: 'hover:text-blue-600' },
     { icon: Mail, href: 'mailto:soulaimanok@gmail.com', label: 'Email', color: 'hover:text-red-500' },
+    { icon: Instagram, href: 'https://instagram.com/soulaimane_hdx', label: 'Instagram', color: 'hover:text-pink-500' },
   ];
 
   const stats = [
-    { icon: Code2, value: '15+', label: 'Projects', color: 'from-blue-500 to-cyan-500' },
-    { icon: Sparkles, value: '3+', label: 'Years Exp', color: 'from-purple-500 to-pink-500' },
-    { icon: Rocket, value: '80%', label: 'self-learning', color: 'from-orange-500 to-red-500' },
+    { icon: Code2, value: '17+', label: 'Projects', color: 'from-blue-500 to-cyan-500' },
+    { icon: Sparkles, value: '4+', label: 'Years Exp', color: 'from-purple-500 to-pink-500' },
+    { icon: Rocket, value: '', label: 'Self-Taught', color: 'from-orange-500 to-red-500' },
   ];
 
   return (
@@ -75,11 +76,10 @@ export default function Hero() {
                 <TypingEffect
                   texts={[
                     'Full-Stack Developer 💻',
-                    'Front-End: React & Next.js ⚛️',
-                    'Back-End: Node.js & MERN Stack 🛠️',
-                    'REST API 🌐',
-                    'AI & Python Enthusiast 🤖',
-                    'PC & IT Systems Technician 🖥️'
+                    'Building Web & Mobile Apps 🚀',
+                    'React • Next.js • Node.js ⚛️',
+                    'IT Systems & Support 🖥️',
+                    'Problem Solver 🧩'
                   ]}
                   speed={80}
                   delay={2500}
@@ -88,23 +88,20 @@ export default function Hero() {
             </div>
 
             {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
-            >
-  Full-stack developer skilled in{' '}
+<motion.p
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.6 }}
+  className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
+>
+  Full-Stack Developer building modern web and mobile applications with{' '}
   <span className="font-semibold text-purple-600 dark:text-purple-400">
-    HTML, CSS, JavaScript, Java, React, Next.js
-  </span>, and{' '}
+    React, Node.js, Express, and MySQL
+  </span>. Strong background in{' '}
   <span className="font-semibold text-purple-600 dark:text-purple-400">
-    WordPress, MERN Stack, Python (AI Basics)
-  </span>. Also experienced in{' '}
-  <span className="font-semibold text-purple-600 dark:text-purple-400">
-    PC maintenance and Windows systems
+    IT systems, troubleshooting, and problem-solving
   </span>.
-            </motion.p>
+</motion.p>
 
             {/* CTA Buttons */}
             <motion.div

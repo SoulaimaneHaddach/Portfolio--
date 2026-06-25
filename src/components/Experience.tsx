@@ -6,25 +6,41 @@ import CounterAnimation from './CounterAnimation';
 
 const experiences = [
   {
-    icon: Briefcase,
-    title: 'Developer',
-    company: 'Self-Employed',
-    period: '2023 - Present',
-    type: 'Full-time',
-    typeColor: 'from-emerald-500 to-green-500',
-    description: 'Building custom web and mobile applications using React, React Native, Next.js, and Java Spring Boot. Focused on responsive design, real-time features, cloud integration, and modern UI/UX best practices.',
-    stack: ['React', 'Next.js', 'Spring Boot', 'TypeScript', 'Tailwind CSS'],
-  },
+icon: Briefcase,
+title: 'Full-Stack Developer & Project Coordinator',
+company: 'HealthMap',
+period: '2024 - 2025',
+type: 'Team Collaboration',
+typeColor: 'from-emerald-500 to-green-500',
+description:
+'Collaborated with a development team for 7 months to design and build a large-scale application. Contributed across frontend, backend, and database development while supporting project coordination and team workflows.',
+stack: [
+'React',
+'Node.js',
+'Express',
+'MySQL',
+'Git',
+'GitHub'
+],
+},
   {
-    icon: Cpu,
-    title: 'Technical Support Specialist',
-    company: 'Tech Solutions Co.',
-    period: '2022 - 2023',
-    type: 'Full-time',
-    typeColor: 'from-emerald-500 to-green-500',
-    description: 'Delivered IT support and infrastructure solutions, focusing on system optimization and cloud workflows.',
-    stack: ['Cloud Computing', 'System Administration', 'Troubleshooting'],
-  },
+icon: Cpu,
+title: 'Freelance IT Support Technician',
+company: 'Self-Employed',
+period: '2020 - Present',
+type: 'Freelance',
+typeColor: 'from-orange-500 to-red-500',
+description:
+'Provided hardware maintenance, system troubleshooting, operating system installation, performance optimization, networking setup, and technical support for home and business clients.',
+stack: [
+'Windows',
+'Linux',
+'Networking',
+'Hardware',
+'System Administration',
+'Troubleshooting'
+],
+},
   {
     icon: GraduationCap,
     title: 'Education & Certifications',
@@ -69,9 +85,9 @@ const experiences = [
 
 export default function Experience() {
   const stats = [
-    { number: 4, suffix: '+', label: 'Years Experience' },
+    { number: 5, suffix: '+', label: 'years of hands-on experience' },
     { number: 14, suffix: '+', label: 'Projects Completed' },
-    { number: 80, suffix: '%', label: 'Success Rate' },
+    { number: 7, suffix: '+', label: 'Months Team Collaboration' },
   ];
 
   return (
