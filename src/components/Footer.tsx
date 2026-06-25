@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Mail, Heart, Linkedin, Twitter, Code2, Sparkles } from 'lucide-react';
+import { Github, Mail, Heart, Linkedin, Twitter, Code2, Sparkles, Instagram  } from 'lucide-react';
 
 export default function Footer() {
   const socialLinks = [
@@ -22,6 +22,7 @@ export default function Footer() {
       label: 'LinkedIn',
       gradient: 'from-blue-600 to-cyan-600'
     },
+    { icon: Instagram, href: 'https://instagram.com/soulaimane_hdx', label: 'Instagram', color: 'hover:text-pink-500' },
   ];
 
   const quickLinks = [
@@ -40,10 +41,10 @@ export default function Footer() {
           {/* About Section */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white">
-              Haddach Soulaimane
+              Soulaimane Haddach
             </h3>
             <p className="text-gray-400 leading-relaxed">
-Building creative and functional web experiences with modern technologies and clean code.
+Full-Stack Developer building modern web and mobile applications with a focus on performance, usability, and clean code.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
@@ -109,8 +110,8 @@ Building creative and functional web experiences with modern technologies and cl
                   <span className="text-2xl transform group-hover:scale-125 transition-transform">📱</span>
                   <div>
                     <div className="text-xs text-gray-500 mb-1">Phone / WhatsApp</div>
-                    <a href="https://wa.me/212631843619" className="hover:text-green-400 transition-colors">
-                      +212 631-843619
+                    <a href="https://wa.me/212773171275" className="hover:text-green-400 transition-colors">
+                      +212 773-171275
                     </a>
                   </div>
                 </div>
@@ -136,8 +137,8 @@ Building creative and functional web experiences with modern technologies and cl
             </p>
             
             <div className="flex items-center gap-2 text-gray-500 text-sm">
-              <span>I hope you like it</span>
-              <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
+              <Code2 className="w-4 h-4" />
+              <span>Built with Next.js & Tailwind CSS</span>
             </div>
           </div>
         </div>

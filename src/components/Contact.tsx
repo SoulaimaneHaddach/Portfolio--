@@ -129,7 +129,7 @@ export default function Contact() {
     {
       icon: Phone,
       label: 'Phone / WhatsApp',
-      value: '+212 631 843 619',
+      value: '+212 773 171 275',
       href: 'https://wa.me/212631843619',
       color: 'from-green-500 to-emerald-500',
     },

@@ -78,10 +78,10 @@ export default function Projects() {
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Sample Work
+            Sample Projects
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A showcase of my recent work and side projects
+            A collection of web and mobile applications built with modern technologies.
           </p>
         </div>
 

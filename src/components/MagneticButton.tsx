@@ -8,13 +8,17 @@ interface MagneticButtonProps {
   className?: string;
   href?: string;
   onClick?: () => void;
+  target?: string;
+  rel?: string;
 }
 
 export default function MagneticButton({ 
   children, 
   className = '', 
   href, 
-  onClick 
+  onClick,
+  target,
+  rel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -49,6 +53,8 @@ export default function MagneticButton({
         <Component
           href={href}
           onClick={onClick}
+          target={target}
+          rel={rel}
           className={`relative overflow-hidden group ${className}`}
         >
           <span className="relative z-10">{children}</span>
