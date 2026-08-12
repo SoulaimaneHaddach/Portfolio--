@@ -7,14 +7,14 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ParticleSystem from '@/components/ParticleSystem';
 import ScrollProgress from '@/components/ScrollProgress';
-import GlowCursor from '@/components/GlowCursor';
+// import GlowCursor from '@/components/GlowCursor';
 
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <ParticleSystem />
       <ScrollProgress />
-      <GlowCursor />
+      {/* <GlowCursor /> */}
       <Navbar />
       <Hero />
       <Projects />

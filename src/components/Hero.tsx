@@ -235,7 +235,7 @@ const socialLinks = [
             transition={{ duration: 1.5, repeat: Infinity }}
             className="flex flex-col items-center gap-2 text-gray-400"
           >
-            <span className="text-sm font-medium">Scroll to explore</span>
+            <span className="text-sm font-medium">Explore My Work</span>
             <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-2">
               <motion.div
                 animate={{ y: [0, 12, 0] }}

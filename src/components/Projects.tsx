@@ -248,15 +248,22 @@ export default function Projects() {
 
                 {/* Links */}
                 <div className="flex gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline text-sm font-semibold group/link"
-                  >
-                    <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    Live Demo
-                  </a>
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline text-sm font-semibold group/link"
+                    >
+                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      Live Demo
+                    </a>
+                  ) : (
+                    <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-semibold">
+                      <span className="w-4 h-4" />
+                      Not launched yet
+                    </span>
+                  )}
                   <a
                     href={project.githubUrl}
                     target="_blank"
