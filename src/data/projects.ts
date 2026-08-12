@@ -6,15 +6,27 @@ export interface Project {
   longDescription: string;
   image: string | string[]; 
   techStack: string[];
-  liveUrl: string;
+  liveUrl: string | null;
   githubUrl: string;
   category: 'frontend' | 'fullstack' | 'ai' | 'static';
   featured: boolean;
 }
 
 export const projects: Project[] = [
+    {
+    id: 1,
+    title: "Doctor Finder",
+    description: "A healthcare platform that helps patients find doctors by location and specialty, explore doctor profiles, and book appointments easily.",
+    longDescription: "A healthcare platform that helps patients find doctors by location and specialty, explore doctor profiles, and book appointments easily.",
+    image: ["apphealth.jpg", "apphealth2.png", "apphealth3.png"],
+    techStack: ["React Native", "React", "Java", "Spring Boot", "MySQL", "REST APIs", "Git"],
+    liveUrl: null,
+    githubUrl: "https://github.com/SoulaimaneHaddach",
+    category: "fullstack",
+    featured: true,
+  },
 {
-  id: 1,
+  id: 2,
   title: "Weather Dashboard",
   description: "A responsive weather app with real-time forecasts and modern UI.",
   longDescription:
@@ -27,7 +39,7 @@ export const projects: Project[] = [
   featured: true,
 },
   {
-    id: 2,
+    id: 3,
     title: "Tic-Tac-Toe-Game",
     description: "Tic-Tac-Toe Game — Play for free against the AI (Easy / Medium / Hard) without logging in. Ranked play, the dashboard, and multiplayer require you to log in.",
     longDescription: "Tech Stack: React 18, Tailwind CSS, PostCSS, Autoprefixer, Axios, STOMP, SockJS, Context API, lucide-react, React Testing Library, Jest, JDK 25, Maven Wrapper, MySQL, PowerShell.",
@@ -37,19 +49,6 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/SoulaimaneHaddachTic-Tac-Toe-Game.git",
     category: "frontend",
     featured: false,
-  },
-
-  {
-    id: 3,
-    title: "old 2021 portfolio",
-    description: "the new path of 2021 portfolio site ",
-    longDescription: "",
-    image: ["2021-1.png", "2021-2.png", "2021-3.png", "2021-4.png", "2021-5.png"],
-    techStack: ["HTML5", "CSS3", "JavaScript"],
-    liveUrl: "https://soulaimneper.netlify.app",
-    githubUrl: "https://github.com/SoulaimaneHaddach/2021-SITE",
-    category: "ai",
-    featured: true,
   },
   {
     id: 4,

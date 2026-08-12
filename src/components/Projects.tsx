@@ -187,15 +187,21 @@ export default function Projects() {
                 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white rounded-full hover:bg-purple-600 hover:text-white transition-all transform hover:scale-110"
-                    aria-label="View live demo"
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-white rounded-full hover:bg-purple-600 hover:text-white transition-all transform hover:scale-110"
+                      aria-label="View live demo"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  ) : (
+                    <span className="p-3 bg-white/30 rounded-full text-gray-300" aria-hidden>
+                      <ExternalLink className="w-5 h-5" />
+                    </span>
+                  )}
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -248,15 +254,22 @@ export default function Projects() {
 
                 {/* Links */}
                 <div className="flex gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline text-sm font-semibold group/link"
-                  >
-                    <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    Live Demo
-                  </a>
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline text-sm font-semibold group/link"
+                    >
+                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                      Live Demo
+                    </a>
+                  ) : (
+                    <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-semibold">
+                      <span className="w-4 h-4" />
+                      Not launched yet
+                    </span>
+                  )}
                   <a
                     href={project.githubUrl}
                     target="_blank"
