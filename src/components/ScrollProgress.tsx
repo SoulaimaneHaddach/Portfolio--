@@ -24,8 +24,7 @@ export default function ScrollProgress() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-primary-600 to-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all z-50 group"
-          whileHover={{ scale: 1.1 }}
+          className="group fixed bottom-8 right-8 rounded-full bg-sky-700 p-4 text-white shadow-md transition-colors hover:bg-sky-600 z-50"
           whileTap={{ scale: 0.9 }}
         >
           <svg
