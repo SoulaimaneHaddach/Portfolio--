@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import BackgroundMusic from "../components/BackgroundMusic";
+import ParticleSystem from "../components/ParticleSystem";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,10 +46,25 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/s logo.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var savedTheme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+                  document.documentElement.style.colorScheme = savedTheme;
+                } catch (error) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
-        {children}
-        <BackgroundMusic />
+        <ParticleSystem />
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );

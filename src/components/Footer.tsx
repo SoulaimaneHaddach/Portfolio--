@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Mail, Heart, Linkedin, Twitter, Code2, Sparkles, Instagram  } from 'lucide-react';
+import { Github, Mail, Phone, MapPin, Linkedin, Code2, Instagram  } from 'lucide-react';
 
 export default function Footer() {
   const socialLinks = [
@@ -8,21 +8,18 @@ export default function Footer() {
       icon: Github, 
       href: 'https://github.com/SoulaimaneHaddach', 
       label: 'GitHub',
-      gradient: 'from-gray-600 to-gray-800'
     },
     { 
       icon: Mail, 
       href: 'mailto:soulaimanok@gmail.com', 
       label: 'Email',
-      gradient: 'from-purple-600 to-pink-600'
     },
     { 
       icon: Linkedin, 
       href: 'https://linkedin.com/in/soulaimane-haddach', 
       label: 'LinkedIn',
-      gradient: 'from-blue-600 to-cyan-600'
     },
-    { icon: Instagram, href: 'https://instagram.com/soulaimane_hdx', label: 'Instagram', color: 'hover:text-pink-500' },
+    { icon: Instagram, href: 'https://instagram.com/soulaimane_hdx', label: 'Instagram', color: 'hover:text-rose-500' },
   ];
 
   const quickLinks = [
@@ -31,19 +28,21 @@ export default function Footer() {
     { name: 'Skills', href: '#skills' },
     { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-slate-100/80 text-slate-700 dark:bg-slate-950/85 dark:text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 grid md:grid-cols-3 gap-12">
           {/* About Section */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
               Soulaimane Haddach
             </h3>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="leading-relaxed text-slate-600 dark:text-slate-400">
 Full-Stack Developer building modern web and mobile applications with a focus on performance, usability, and clean code.
             </p>
             <div className="flex gap-3">
@@ -55,11 +54,11 @@ Full-Stack Developer building modern web and mobile applications with a focus on
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative p-3 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all duration-300 overflow-hidden"
+                    className="group relative overflow-hidden rounded-xl border border-slate-300 bg-white p-3 transition-colors duration-200 hover:border-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-500"
                     aria-label={social.label}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-r ${social.gradient} opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-                    <IconComponent className="w-5 h-5 relative z-10 transform group-hover:scale-110 group-hover:rotate-12 transition-transform" />
+                    <div className="absolute inset-0 bg-slate-100 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-slate-800"></div>
+                    <IconComponent className="relative z-10 h-5 w-5 text-slate-900 dark:text-white" />
                   </a>
                 );
               })}
@@ -68,8 +67,7 @@ Full-Stack Developer building modern web and mobile applications with a focus on
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-purple-400" />
+            <h4 className="mb-6 text-lg font-bold text-slate-900 dark:text-white">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -77,10 +75,10 @@ Full-Stack Developer building modern web and mobile applications with a focus on
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="group inline-flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-300"
+                    className="group inline-flex items-center gap-2 text-slate-600 transition-colors duration-200 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
                   >
-                    <span className="w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-6 transition-all duration-300 rounded-full"></span>
-                    <span className="group-hover:translate-x-1 transition-transform">{link.name}</span>
+                    <span className="h-0.5 w-0 rounded-full bg-slate-700 transition-all duration-200 group-hover:w-4 dark:bg-slate-300"></span>
+                    <span>{link.name}</span>
                   </a>
                 </li>
               ))}
@@ -89,38 +87,38 @@ Full-Stack Developer building modern web and mobile applications with a focus on
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-              <Mail className="w-5 h-5 text-purple-400" />
+            <h4 className="mb-6 flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
+              <Mail className="h-5 w-5 text-slate-700 dark:text-slate-300" />
               Contact Info
             </h4>
             <ul className="space-y-4">
               <li className="group">
-                <div className="flex items-start gap-3 text-gray-400 hover:text-white transition-colors">
-                  <span className="text-2xl transform group-hover:scale-125 transition-transform">📧</span>
+                <div className="flex items-start gap-3 text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
+                  <Mail className="mt-0.5 h-5 w-5 text-slate-500" />
                   <div>
-                    <div className="text-xs text-gray-500 mb-1">Email</div>
-                    <a href="mailto:soulaimanok@gmail.com" className="hover:text-purple-400 transition-colors break-all">
+                    <div className="mb-1 text-xs text-slate-500">Email</div>
+                    <a href="mailto:soulaimanok@gmail.com" className="break-all text-slate-800 transition-colors hover:text-slate-950 dark:text-slate-200 dark:hover:text-white">
                       soulaimanok@gmail.com
                     </a>
                   </div>
                 </div>
               </li>
               <li className="group">
-                <div className="flex items-start gap-3 text-gray-400 hover:text-white transition-colors">
-                  <span className="text-2xl transform group-hover:scale-125 transition-transform">📱</span>
+                <div className="flex items-start gap-3 text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
+                  <Phone className="mt-0.5 h-5 w-5 text-slate-500" />
                   <div>
-                    <div className="text-xs text-gray-500 mb-1">Phone / WhatsApp</div>
-                    <a href="https://wa.me/212773171275" className="hover:text-green-400 transition-colors">
+                    <div className="mb-1 text-xs text-slate-500">Phone / WhatsApp</div>
+                    <a href="https://wa.me/212773171275" className="transition-colors hover:text-green-600 dark:hover:text-green-400">
                       +212 773-171275
                     </a>
                   </div>
                 </div>
               </li>
               <li className="group">
-                <div className="flex items-start gap-3 text-gray-400 hover:text-white transition-colors">
-                  <span className="text-2xl transform group-hover:scale-125 transition-transform">📍</span>
+                <div className="flex items-start gap-3 text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
+                  <MapPin className="mt-0.5 h-5 w-5 text-slate-500" />
                   <div>
-                    <div className="text-xs text-gray-500 mb-1">Location</div>
+                    <div className="mb-1 text-xs text-slate-500">Location</div>
                     <span>Morocco</span>
                   </div>
                 </div>
@@ -130,13 +128,13 @@ Full-Stack Developer building modern web and mobile applications with a focus on
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-gray-800">
+        <div className="border-t border-slate-300 py-6 dark:border-slate-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm text-center md:text-left">
+            <p className="text-center text-sm text-slate-500 md:text-left">
               © {new Date().getFullYear()} Haddach Soulaimane. All rights reserved.
             </p>
             
-            <div className="flex items-center gap-2 text-gray-500 text-sm">
+            <div className="flex items-center gap-2 text-sm text-slate-500">
               <Code2 className="w-4 h-4" />
               <span>Built with Next.js & Tailwind CSS</span>
             </div>

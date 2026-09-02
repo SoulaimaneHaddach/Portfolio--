@@ -2,26 +2,17 @@
 
 import { ExternalLink, Github, Folder, Star, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '@/data/projects';
-import { useState, useEffect } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 
 export default function Projects() {
   const [filter, setFilter] = useState<string>('all');
-  const [isAnimating, setIsAnimating] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>({});
-  
+
   const categories = ['all', 'fullstack', 'frontend', 'ai', 'static'];
-  
-  const filteredProjects = filter === 'all' 
-    ? projects 
-    : projects.filter(p => p.category === filter);
 
+  const filteredProjects =
+    filter === 'all' ? projects : projects.filter((project) => project.category === filter);
 
-
-  useEffect(() => {
-    setIsAnimating(true);
-    const timer = setTimeout(() => setIsAnimating(false), 100);
-    return () => clearTimeout(timer);
-  }, [filter]);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => {
@@ -34,11 +25,12 @@ export default function Projects() {
         });
         return updated;
       });
-    }, 3000);  // Change image time
+    }, 3000);
+
     return () => clearInterval(interval);
   }, [filteredProjects]);
 
-  const handlePrevImage = (projectId: number, imagesLength: number, e: React.MouseEvent) => {
+  const handlePrevImage = (projectId: number, imagesLength: number, e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrentImageIndex((prev) => ({
@@ -47,7 +39,7 @@ export default function Projects() {
     }));
   };
 
-  const handleNextImage = (projectId: number, imagesLength: number, e: React.MouseEvent) => {
+  const handleNextImage = (projectId: number, imagesLength: number, e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrentImageIndex((prev) => ({
@@ -56,7 +48,7 @@ export default function Projects() {
     }));
   };
 
-  const handleDotClick = (projectId: number, index: number, e: React.MouseEvent) => {
+  const handleDotClick = (projectId: number, index: number, e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setCurrentImageIndex((prev) => ({
@@ -66,35 +58,31 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" >
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4">
-            <Folder className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-            <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-              Portfolio
-            </span>
+    <section id="projects" className="py-20 text-slate-900 dark:text-slate-100">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 max-w-3xl text-center mx-auto">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            <Folder className="h-4 w-4" />
+            Work
           </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Sample Projects
+
+          <h2 className="mb-4 text-4xl font-bold tracking-[-0.05em] text-slate-900 dark:text-white md:text-5xl">
+            Selected Projects
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-300">
             A collection of web and mobile applications built with modern technologies.
           </p>
         </div>
 
-        {/* Simple Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="mb-12 flex flex-wrap justify-center gap-3">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-6 py-2.5 rounded-xl font-medium capitalize transition-all duration-300 ${
+              className={`rounded-full px-4 py-2 text-sm font-medium capitalize transition-colors duration-200 ${
                 filter === cat
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg scale-105'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:scale-105 hover:shadow-md'
+                  ? 'bg-slate-100 text-slate-950'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800'
               }`}
             >
               {cat === 'ai' ? 'AI & ML' : cat.replace('_', ' ')}
@@ -102,202 +90,183 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.length > 0 ? (
-            filteredProjects.map((project, index) => (
-              <div
-                key={`${project.id}-${filter}`}
-                className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-200 dark:border-gray-700 opacity-0"
-                style={{
-                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`
-                }}
-              >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  {(() => {
-                    const images = Array.isArray(project.image) ? project.image : [project.image];
-                    const currentIndex = currentImageIndex[project.id] || 0;
-                    const currentImg = images[currentIndex];
-                    
-                    const imgSrc = currentImg
-                      ? (currentImg.startsWith('http') || currentImg.startsWith('/')
-                          ? currentImg
-                          : `/${currentImg}`)
-                      : '';
+            filteredProjects.map((project, index) => {
+              const images = Array.isArray(project.image) ? project.image : [project.image];
+              const currentIndex = currentImageIndex[project.id] || 0;
+              const currentImg = images[currentIndex];
+              const imgSrc = currentImg
+                ? currentImg.startsWith('http') || currentImg.startsWith('/')
+                  ? currentImg
+                  : `/${currentImg}`
+                : '';
 
-                    return (
+              return (
+                <div
+                  key={`${project.id}-${filter}`}
+                  className="group overflow-hidden rounded-2xl border border-slate-200 bg-white/80 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900/85 dark:hover:border-slate-700"
+                  style={{
+                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`,
+                  }}
+                >
+                  <div className="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    {imgSrc ? (
+                      <img
+                        src={imgSrc}
+                        alt={`${project.title} - Image ${currentIndex + 1}`}
+                        className="h-full w-full object-cover transition-opacity duration-500"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gray-200 dark:bg-gray-700">
+                        <Folder className="h-20 w-20 text-gray-400" />
+                      </div>
+                    )}
+
+                    {images.length > 1 && (
                       <>
-                        {imgSrc ? (
-                          <img
-                            src={imgSrc}
-                            alt={`${project.title} - Image ${currentIndex + 1}`}
-                            className="w-full h-full object-cover transition-opacity duration-500"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                            <Folder className="w-20 h-20 text-gray-400" />
-                          </div>
-                        )}
+                        <button
+                          onClick={(e) => handlePrevImage(project.id, images.length, e)}
+                          className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/60 bg-black/30 p-1.5 text-white transition-colors hover:bg-black/50"
+                          aria-label="Previous image"
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                        </button>
+                        <button
+                          onClick={(e) => handleNextImage(project.id, images.length, e)}
+                          className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/60 bg-black/30 p-1.5 text-white transition-colors hover:bg-black/50"
+                          aria-label="Next image"
+                        >
+                          <ChevronRight className="h-4 w-4" />
+                        </button>
 
-                        {/* Carousel Controls - Only show if multiple images */}
-                        {images.length > 1 && (
-                          <>
-                            {/* Navigation Arrows */}
+                        <div className="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+                          {images.map((_, idx) => (
                             <button
-                              onClick={(e) => handlePrevImage(project.id, images.length, e)}
-                              className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                              aria-label="Previous image"
-                            >
-                              <ChevronLeft className="w-4 h-4" />
-                            </button>
-                            <button
-                              onClick={(e) => handleNextImage(project.id, images.length, e)}
-                              className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-black/50 hover:bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                              aria-label="Next image"
-                            >
-                              <ChevronRight className="w-4 h-4" />
-                            </button>
+                              key={idx}
+                              onClick={(e) => handleDotClick(project.id, idx, e)}
+                              className={`h-2 rounded-full transition-all duration-300 ${
+                                idx === currentIndex ? 'w-6 bg-white' : 'w-2 bg-white/50 hover:bg-white/75'
+                              }`}
+                              aria-label={`Go to image ${idx + 1}`}
+                            />
+                          ))}
+                        </div>
 
-                            {/* Dots Indicator */}
-                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                              {images.map((_, idx) => (
-                                <button
-                                  key={idx}
-                                  onClick={(e) => handleDotClick(project.id, idx, e)}
-                                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                    idx === currentIndex
-                                      ? 'bg-white w-6'
-                                      : 'bg-white/50 hover:bg-white/75'
-                                  }`}
-                                  aria-label={`Go to image ${idx + 1}`}
-                                />
-                              ))}
-                            </div>
-
-                            {/* Image Counter */}
-                            <div className="absolute top-2 right-2 px-2 py-1 bg-black/60 text-white text-xs rounded-full font-medium">
-                              {currentIndex + 1} / {images.length}
-                            </div>
-                          </>
-                        )}
+                        <div className="absolute right-2 top-2 rounded-full bg-black/60 px-2 py-1 text-xs font-medium text-white">
+                          {currentIndex + 1} / {images.length}
+                        </div>
                       </>
-                    );
-                  })()}
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  {project.liveUrl ? (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full hover:bg-purple-600 hover:text-white transition-all transform hover:scale-110"
-                      aria-label="View live demo"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                  ) : (
-                    <span className="p-3 bg-white/30 rounded-full text-gray-300" aria-hidden>
-                      <ExternalLink className="w-5 h-5" />
-                    </span>
-                  )}
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white rounded-full hover:bg-gray-900 hover:text-white transition-all transform hover:scale-110"
-                    aria-label="View GitHub"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                </div>
+                    )}
 
-                {/* Badges */}
-                {project.featured && (
-                  <div className="absolute top-3 right-3 px-3 py-1 bg-yellow-400 text-gray-900 text-xs font-bold rounded-full flex items-center gap-1">
-                    <Star className="w-3 h-3 fill-current" />
-                    Featured
+                    <div className="absolute inset-0 flex items-center justify-center gap-3 bg-slate-950/30 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-full bg-white p-2.5 text-slate-900 transition-colors hover:bg-slate-100"
+                          aria-label="View live demo"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      ) : (
+                        <span className="rounded-full bg-white/40 p-2.5 text-slate-200" aria-hidden>
+                          <ExternalLink className="h-4 w-4" />
+                        </span>
+                      )}
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full bg-white p-2.5 text-slate-900 transition-colors hover:bg-slate-100"
+                        aria-label="View GitHub"
+                      >
+                        <Github className="h-4 w-4" />
+                      </a>
+                    </div>
+
+                    {project.featured && (
+                      <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-amber-900">
+                        <Star className="h-3 w-3 fill-current" />
+                        Featured
+                      </div>
+                    )}
+
+                    <div className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-700 dark:bg-slate-900/90 dark:text-slate-200">
+                      {project.category}
+                    </div>
                   </div>
-                )}
-                
-                <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-xs font-semibold rounded-full capitalize">
-                  {project.category}
-                </div>
-              </div>
 
-              {/* Project Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm line-clamp-2">
-                  {project.description}
-                </p>
+                  <div className="p-6">
+                    <h3 className="mb-2 text-xl font-semibold text-slate-900 dark:text-white">
+                      {project.title}
+                    </h3>
+                    <p className="mb-4 line-clamp-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                      {project.description}
+                    </p>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.slice(0, 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.techStack.length > 3 && (
-                    <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs font-medium">
-                      +{project.techStack.length - 3}
-                    </span>
-                  )}
-                </div>
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      {project.techStack.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > 3 && (
+                        <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+                          +{project.techStack.length - 3}
+                        </span>
+                      )}
+                    </div>
 
-                {/* Links */}
-                <div className="flex gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  {project.liveUrl ? (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline text-sm font-semibold group/link"
-                    >
-                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                      Live Demo
-                    </a>
-                  ) : (
-                    <span className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-semibold">
-                      <span className="w-4 h-4" />
-                      Not launched yet
-                    </span>
-                  )}
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:underline text-sm font-semibold group/link"
-                  >
-                    <Github className="w-4 h-4 group-hover/link:rotate-12 transition-transform" />
-                    Code
-                  </a>
+                    <div className="flex gap-4 border-t border-slate-200 pt-4 dark:border-slate-700">
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white group/link"
+                        >
+                          <ExternalLink className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                          Live Demo
+                        </a>
+                      ) : (
+                        <span className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                          <span className="h-4 w-4" />
+                          Not launched yet
+                        </span>
+                      )}
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white group/link"
+                      >
+                        <Github className="h-4 w-4 transition-transform group-hover/link:rotate-12" />
+                        Code
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))
+              );
+            })
           ) : (
-            // Empty State
             <div className="col-span-full flex flex-col items-center justify-center py-20">
-              <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
-                <Search className="w-16 h-16 text-gray-400" />
+              <div className="mb-6 rounded-full bg-slate-100 p-6 dark:bg-slate-800">
+                <Search className="h-16 w-16 text-slate-400" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="mb-2 text-2xl font-bold text-slate-900 dark:text-white">
                 No Projects Found
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
+              <p className="mb-6 text-slate-600 dark:text-slate-400">
                 Try selecting a different category
               </p>
               <button
                 onClick={() => setFilter('all')}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+                className="rounded-xl bg-slate-900 px-6 py-3 font-semibold text-white transition-colors hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
               >
                 View All Projects
               </button>
@@ -305,32 +274,31 @@ export default function Projects() {
           )}
         </div>
 
-        {/* GitHub CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex flex-col items-center gap-6 p-8 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl border-2 border-purple-200 dark:border-purple-800">
+        <div className="mt-16 text-center">
+          <div className="inline-flex flex-col items-center gap-6 rounded-2xl border border-slate-200 bg-slate-50 p-8 dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full">
-                <Github className="w-6 h-6 text-white" />
+              <div className="rounded-full bg-slate-900 p-3 dark:bg-slate-100">
+                <Github className="h-6 w-6 text-white dark:text-slate-900" />
               </div>
               <div className="text-left">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                   More on GitHub
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-slate-600 dark:text-slate-400">
                   Check out my other projects
                 </p>
               </div>
             </div>
-            
+
             <a
               href="https://github.com/SoulaimaneHaddach"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 font-semibold text-white transition-colors hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
             >
-              <Github className="w-5 h-5" />
+              <Github className="h-5 w-5" />
               View GitHub Profile
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
           </div>
         </div>

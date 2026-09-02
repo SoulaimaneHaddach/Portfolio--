@@ -3,31 +3,29 @@
 import { useEffect, useState } from 'react';
 
 export function useTheme() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  const applyTheme = (nextTheme: 'light' | 'dark') => {
+    const root = document.documentElement;
+    root.classList.toggle('dark', nextTheme === 'dark');
+    root.style.colorScheme = nextTheme;
+    localStorage.setItem('theme', nextTheme);
+  };
 
   useEffect(() => {
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    
-    const initialTheme = savedTheme || (isDark ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'dark';
+
     setTheme(initialTheme);
-    
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
+    applyTheme(initialTheme);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    localStorage.setItem('theme', newTheme);
+    setTheme((current) => {
+      const nextTheme = current === 'light' ? 'dark' : 'light';
+      applyTheme(nextTheme);
+      return nextTheme;
+    });
   };
 
   return { theme, toggleTheme };

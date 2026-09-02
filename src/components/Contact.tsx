@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle, Sparkles, Zap, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, Zap, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -124,45 +124,39 @@ export default function Contact() {
       label: 'Email',
       value: 'soulaimanok@gmail.com',
       href: 'mailto:soulaimanok@gmail.com',
-      color: 'from-purple-500 to-pink-500',
+      color: 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900',
     },
     {
       icon: Phone,
       label: 'Phone / WhatsApp',
       value: '+212 773 171 275',
       href: 'https://wa.me/212631843619',
-      color: 'from-green-500 to-emerald-500',
+      color: 'bg-emerald-600 text-white',
     },
     {
       icon: MapPin,
       label: 'Location',
       value: 'Morocco',
       href: null,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'bg-sky-600 text-white',
     },
   ];
 
   return (
-    <section id="contact" >
-      {/* Animated background elements */}
-      <div className="absolute top-20 right-10 w-96 h-96 bg-purple-300/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-blue-300/20 dark:bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="contact" className="py-20">
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="transition-all duration-500">
           {/* Header with badge */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4 transform transition-all hover:scale-105">
-              <Zap className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-                Let&apos;s Connect
-              </span>
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+              <Zap className="h-4 w-4" />
+              Let&apos;s Connect
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="mb-4 text-4xl font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl">
               Get In Touch
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
               Have a project in mind? Let&apos;s work together to bring your ideas to life
             </p>
           </div>
@@ -171,14 +165,14 @@ export default function Contact() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div className="relative">
-                <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-purple-100 dark:border-purple-800/30 transition-all hover:shadow-2xl">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Sparkles className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm transition-all dark:border-slate-800 dark:bg-slate-900/85">
+                  <div className="mb-4 flex items-center gap-3">
+                    <MessageCircle className="h-6 w-6 text-slate-700 dark:text-slate-200" />
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                         Let&apos;s Talk
                     </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="leading-relaxed text-slate-600 dark:text-slate-300">
                     I&apos;m always interested in hearing about new projects and opportunities. 
                     Whether you have a question or just want to say hi, feel free to reach out!
                   </p>
@@ -193,18 +187,15 @@ export default function Contact() {
                   return (
                     <div
                       key={index}
-                      className="group relative transform transition-all duration-300 hover:scale-105 hover:translate-x-2"
+                      className="group relative transition-colors duration-200 hover:bg-slate-100/70 dark:hover:bg-slate-900/60"
                     >
-                      <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all border border-gray-100 dark:border-gray-700">
-                        {/* Gradient accent */}
-                        <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${info.color} rounded-l-2xl`} />
-                        
-                        <div className="flex items-center gap-4 ml-4">
-                          <div className={`p-3 bg-gradient-to-br ${info.color} rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                            <IconComponent className="w-6 h-6 text-white" />
+                      <div className="relative rounded-2xl border border-slate-200 bg-white/80 p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/85">
+                        <div className="flex items-center gap-4">
+                          <div className={`inline-flex rounded-xl p-3 ${info.color}`}>
+                            <IconComponent className="h-5 w-5" />
                           </div>
                           <div className="flex-1">
-                            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+                            <p className="mb-1 text-[11px] font-medium uppercase tracking-[0.14em] text-slate-400">
                               {info.label}
                             </p>
                             {info.href ? (
@@ -212,12 +203,12 @@ export default function Contact() {
                                 href={info.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors"
+                                className="font-semibold text-slate-900 transition-colors hover:text-slate-600 dark:text-white dark:hover:text-slate-300"
                               >
                                 {info.value}
                               </a>
                             ) : (
-                              <p className="font-semibold text-gray-900 dark:text-white">
+                              <p className="font-semibold text-slate-900 dark:text-white">
                                 {info.value}
                               </p>
                             )}
@@ -234,21 +225,20 @@ export default function Contact() {
                 href="https://wa.me/212631843619"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all overflow-hidden hover:scale-105"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-emerald-600 px-8 py-4 font-semibold text-white transition-colors hover:bg-emerald-500"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <MessageCircle className="w-5 h-5 relative z-10" />
-                <span className="relative z-10">Chat on WhatsApp</span>
+                <MessageCircle className="h-5 w-5" />
+                Chat on WhatsApp
               </a>
             </div>
 
             {/* Contact Form */}
             <div>
-              <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl space-y-6 border border-purple-100 dark:border-purple-800/30">
+              <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-slate-200 bg-white/80 p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900/85">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
                   >
                     Your Name *
                   </label>
@@ -258,7 +248,7 @@ export default function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all placeholder:text-gray-400 ${
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-slate-900 focus:outline-none dark:bg-slate-800 dark:text-white ${
                       errors.name ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'
                     }`}
                     placeholder="John Doe"
@@ -274,7 +264,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
                   >
                     Your Email *
                   </label>
@@ -284,7 +274,7 @@ export default function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all placeholder:text-gray-400 ${
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-slate-900 focus:outline-none dark:bg-slate-800 dark:text-white ${
                       errors.email ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'
                     }`}
                     placeholder="john@example.com"
@@ -300,7 +290,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
                   >
                     Subject *
                   </label>
@@ -310,7 +300,7 @@ export default function Contact() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all placeholder:text-gray-400 ${
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-slate-900 focus:outline-none dark:bg-slate-800 dark:text-white ${
                       errors.subject ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'
                     }`}
                     placeholder="Project Inquiry"
@@ -326,7 +316,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
+                    className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300"
                   >
                     Message *
                   </label>
@@ -336,7 +326,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-all resize-none placeholder:text-gray-400 ${
+                    className={`w-full resize-none rounded-xl border bg-white px-4 py-3 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-slate-900 focus:outline-none dark:bg-slate-800 dark:text-white ${
                       errors.message ? 'border-red-500' : 'border-gray-200 dark:border-gray-600'
                     }`}
                     placeholder="Tell me about your project..."
@@ -353,13 +343,10 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className={`group relative inline-flex items-center justify-center gap-3 w-full px-8 py-4 rounded-xl font-semibold shadow-lg transition-all overflow-hidden ${
-                    status === 'success' 
-                      ? 'bg-gradient-to-r from-green-500 to-emerald-500' 
-                      : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:shadow-2xl hover:scale-105'
-                  } text-white disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className={`inline-flex w-full items-center justify-center gap-3 rounded-xl px-8 py-4 font-semibold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+                    status === 'success' ? 'bg-emerald-600' : 'bg-slate-900 hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200'
+                  }`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity" />
                   {status === 'sending' ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin relative z-10" />

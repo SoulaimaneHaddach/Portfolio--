@@ -1,85 +1,102 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, MessageCircle, Sparkles, Code2, Rocket, Instagram } from 'lucide-react';
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  MessageCircle,
+  Clock3,
+  Code2,
+  Rocket,
+  Instagram,
+} from 'lucide-react';
 import TypingEffect from './TypingEffect';
 import MagneticButton from './MagneticButton';
 import TiltCard from './TiltCard';
 import RevealText from './RevealText';
 
 export default function Hero() {
-const socialLinks = [
-    { icon: Github, href: 'https://github.com/SoulaimaneHaddach', label: 'GitHub', color: 'hover:text-gray-900 dark:hover:text-white' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/soulaiman-haddash-06a15b387/', label: 'LinkedIn', color: 'hover:text-blue-600' },
-    { icon: Mail, href: 'mailto:soulaimanok@gmail.com', label: 'Email', color: 'hover:text-red-500' },
-    { icon: Instagram, href: 'https://instagram.com/soulaimane_hdx', label: 'Instagram', color: 'hover:text-pink-500' },
+  const socialLinks = [
+    {
+      icon: Github,
+      href: 'https://github.com/SoulaimaneHaddach',
+      label: 'GitHub',
+      color: 'hover:text-slate-900 dark:hover:text-white',
+    },
+    {
+      icon: Linkedin,
+      href: 'https://www.linkedin.com/in/soulaiman-haddash-06a15b387/',
+      label: 'LinkedIn',
+      color: 'hover:text-sky-700',
+    },
+    {
+      icon: Mail,
+      href: 'mailto:soulaimanok@gmail.com',
+      label: 'Email',
+      color: 'hover:text-slate-700',
+    },
+    {
+      icon: Instagram,
+      href: 'https://instagram.com/soulaimane_hdx',
+      label: 'Instagram',
+      color: 'hover:text-rose-600',
+    },
   ];
 
   const stats = [
-    { icon: Code2, value: '17+', label: 'Projects', color: 'from-blue-500 to-cyan-500' },
-    { icon: Sparkles, value: '4+', label: 'Years Exp', color: 'from-purple-500 to-pink-500' },
-    { icon: Rocket, value: '', label: 'Self-Taught', color: 'from-orange-500 to-red-500' },
+    { icon: Code2, value: '17+', label: 'Projects' },
+    { icon: Clock3, value: '4+', label: 'Years Exp' },
+    { icon: Rocket, value: '', label: 'Self-Taught' },
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 ">
-      {/* Animated gradient orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-700" />
-      
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-[1600px] mx-auto">
-          {/* Left Side - Text Content */}
+    <section id="home" className="relative flex min-h-screen items-center justify-center pt-20">
+      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-slate-100/80 to-transparent dark:from-slate-900/80" />
+
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20">
+        <div className="mx-auto grid max-w-[1600px] items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, type: 'spring' }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-full"
-            >
-              <Sparkles className="w-4 h-4 text-purple-500" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Available for Remote / Relocation
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 shadow-sm dark:border-slate-700 dark:bg-slate-900/80">
+              <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
+                just... be happy
               </span>
-            </motion.div>
+            </div>
 
-            {/* Main Heading */}
             <div className="space-y-4">
               <RevealText
                 text="Hi, I&apos;m"
-                className="text-2xl md:text-3xl font-medium text-gray-600 dark:text-gray-400"
+                className="text-2xl font-medium text-gray-600 md:text-3xl dark:text-gray-400"
               />
-              
+
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold"
+                className="text-5xl font-bold tracking-tight text-slate-900 md:text-6xl lg:text-7xl dark:text-white"
               >
-                <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Haddach Soulaimane
-                </span>
+                <span className="text-slate-900 dark:text-white">Haddach Soulaimane</span>
               </motion.h1>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-medium min-h-[40px]"
+                className="min-h-[40px] text-2xl font-medium text-slate-700 md:text-3xl dark:text-slate-300"
               >
                 <TypingEffect
                   texts={[
-                    'Full-Stack Developer 💻',
-                    'Building Web & Mobile Apps 🚀',
-                    'React • Next.js • Node.js ⚛️',
-                    'IT Systems & Support 🖥️',
-                    'Problem Solver 🧩'
+                    'Full-Stack Developer',
+                    'Building Web & Mobile Apps',
+                    'React • Next.js • Node.js',
+                    'IT Systems & Support',
+                    'Problem Solver',
                   ]}
                   speed={80}
                   delay={2500}
@@ -87,81 +104,70 @@ const socialLinks = [
               </motion.div>
             </div>
 
-            {/* Description */}
-<motion.p
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.6 }}
-  className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
->
-  Full-Stack Developer building modern web and mobile applications with{' '}
-  <span className="font-semibold text-purple-600 dark:text-purple-400">
-    React, Node.js, Express, and MySQL
-  </span>. Strong background in{' '}
-  <span className="font-semibold text-purple-600 dark:text-purple-400">
-    IT systems, troubleshooting, and problem-solving
-  </span>.
-</motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-300"
+            >
+              Full-Stack Developer building modern web and mobile applications with{' '}
+              <span className="font-semibold text-slate-900 dark:text-white">
+                React, Node.js, Express, and MySQL
+              </span>
+              . Strong background in{' '}
+              <span className="font-semibold text-slate-900 dark:text-white">
+                IT systems, troubleshooting, and problem-solving
+              </span>
+              .
+            </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
               className="flex flex-wrap gap-4"
             >
-              <MagneticButton
-                href="#contact"
-                className="btn-primary group"
-              >
-                <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <MagneticButton href="#contact" className="btn-primary group">
+                <MessageCircle className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5" />
                 Let&apos;s Talk
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 opacity-0 group-hover:opacity-20 rounded-lg"
-                  initial={false}
-                  whileHover={{ scale: 1.05 }}
-                />
               </MagneticButton>
 
-              <MagneticButton
-                href="Haddach_Soulaimane_CV.pdf"
-                className="btn-secondary group"
-                
-              >
-                <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              <MagneticButton href="Haddach_Soulaimane_CV.pdf" className="btn-secondary group">
+                <Download className="h-5 w-5 transition-transform group-hover:translate-y-1" />
                 Download CV
               </MagneticButton>
             </motion.div>
 
-            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
               className="flex gap-4 pt-4"
             >
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`group relative p-4 bg-gray-100 dark:bg-gray-800 rounded-xl transition-all ${social.color}`}
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-6 h-6" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                </motion.a>
-              ))}
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+
+                return (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900"
+                    aria-label={social.label}
+                  >
+                    <Icon className={`h-6 w-6 text-slate-700 transition-colors dark:text-slate-200 ${social.color}`} />
+                  </motion.a>
+                );
+              })}
             </motion.div>
           </motion.div>
 
-          {/* Right Side - 3D Profile Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -170,80 +176,54 @@ const socialLinks = [
           >
             <TiltCard>
               <div className="relative">
-                {/* Main card */}
-                <div className="relative w-full max-w-lg mx-auto aspect-square rounded-3xl bg-gradient-to-br from-purple-500 via-blue-500 to-purple-600 p-1 shadow-2xl">
-                  <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl flex items-center justify-center overflow-hidden">
-                    <img src="IMG_1404.png" alt="Haddach Soulaimane" className="w-full h-full object-cover" />
+                <div className="relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-[24px] border border-slate-200 bg-stone-100 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                  <div className="flex h-full w-full items-center justify-center overflow-hidden">
+                    <img src="IMG_1404.png" alt="Haddach Soulaimane" className="h-full w-full object-cover" />
                   </div>
                 </div>
 
-                {/* Floating stats */}
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1 + index * 0.15, type: 'spring' }}
-                    className={`absolute ${
-                      index === 0 ? 'top-10 -left-4' : 
-                      index === 1 ? 'bottom-20 -left-8' : 
-                      'top-20 -right-4'
-                    }`}
-                  >
+                {stats.map((stat, index) => {
+                  const Icon = stat.icon;
+
+                  return (
                     <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="card p-4 backdrop-blur-xl bg-white/90 dark:bg-gray-800/90 shadow-2xl"
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1 + index * 0.15, duration: 0.35 }}
+                      className={`absolute ${
+                        index === 0 ? 'top-6 -left-2' : index === 1 ? 'bottom-8 -left-2' : 'top-12 -right-2'
+                      }`}
                     >
-                      <div className={`p-3 bg-gradient-to-br ${stat.color} rounded-lg mb-2`}>
-                        <stat.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">
-                        {stat.label}
+                      <div className="rounded-xl border border-slate-200 bg-white/90 px-3 py-2 shadow-sm backdrop-blur-[1px] dark:border-slate-700 dark:bg-slate-900/90">
+                        <div className="mb-2 inline-flex rounded-md bg-slate-800 p-2 dark:bg-slate-700">
+                          <Icon className="h-4 w-4 text-white" />
+                        </div>
+                        <div className="text-lg font-bold text-slate-900 dark:text-white">{stat.value}</div>
+                        <div className="text-[10px] font-medium uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+                          {stat.label}
+                        </div>
                       </div>
                     </motion.div>
-                  </motion.div>
-                ))}
-
-                {/* Decorative elements */}
-                <motion.div
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 180, 360],
-                  }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full"
-                >
-                  <div className="w-full h-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-3xl" />
-                </motion.div>
+                  );
+                })}
               </div>
             </TiltCard>
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
           className="absolute bottom left-1/2 -translate-x-1/2"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-gray-400"
-          >
+          <div className="flex flex-col items-center gap-2 text-gray-400">
             <span className="text-sm font-medium">Explore My Work</span>
-            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-2">
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="w-1 h-2 bg-gray-400 rounded-full"
-              />
+            <div className="flex h-10 w-6 justify-center rounded-full border-2 border-gray-400 p-2">
+              <div className="h-2 w-1 rounded-full bg-gray-400" />
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

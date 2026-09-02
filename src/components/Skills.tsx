@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { skills, skillCategories } from '@/data/skills';
 import * as Icons from 'lucide-react';
-import { Sparkles, TrendingUp, Award, Zap } from 'lucide-react';
+import { TrendingUp, Award, Zap, Rocket, Lightbulb, Handshake } from 'lucide-react';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -28,12 +28,10 @@ export default function Skills() {
   const averageLevel = Math.round(skills.reduce((acc, s) => acc + s.level, 0) / skills.length);
 
   return (
-    <section id="skills" className="py-20 px-4 relative">
-      {/* Subtle background effects */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-3xl" />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="skills" className="relative py-20 px-4">
+      <div className="absolute inset-x-0 top-0 h-0" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,11 +44,10 @@ export default function Skills() {
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ type: 'spring', delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full mb-4"
+              transition={{ duration: 0.35, delay: 0.2 }}
+              className="mb-4 inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm dark:border-slate-700 dark:bg-slate-900"
             >
-              <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <span className="text-sm font-semibold text-purple-600 dark:text-purple-400">
+              <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
                 Technical Arsenal
               </span>
             </motion.div>
@@ -63,17 +60,17 @@ export default function Skills() {
             </p>
 
             {/* Stats Cards */}
-            <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+            <div className="mx-auto mb-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-xl p-4 border border-purple-200 dark:border-purple-800/30"
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
               >
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <Zap className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                  <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">{totalSkills}</span>
+                <div className="mb-1 flex items-center justify-center gap-2">
+                  <Zap className="h-4 w-4 text-slate-700 dark:text-slate-300" />
+                  <span className="text-2xl font-bold text-slate-900 dark:text-white">{totalSkills}</span>
                 </div>
                 <p className="text-xs text-gray-600 dark:text-gray-400">Total Skills</p>
               </motion.div>
@@ -83,11 +80,11 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl p-4 border border-blue-200 dark:border-blue-800/30"
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
               >
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <Award className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{advancedSkills}</span>
+                <div className="mb-1 flex items-center justify-center gap-2">
+                  <Award className="h-4 w-4 text-slate-700 dark:text-slate-300" />
+                  <span className="text-2xl font-bold text-slate-900 dark:text-white">{advancedSkills}</span>
                 </div>
                 <p className="text-xs text-gray-600 dark:text-gray-400">Advanced (80%+)</p>
               </motion.div>
@@ -97,11 +94,11 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-pink-900/20 dark:to-pink-800/20 rounded-xl p-4 border border-pink-200 dark:border-pink-800/30"
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
               >
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <TrendingUp className="w-4 h-4 text-pink-600 dark:text-pink-400" />
-                  <span className="text-2xl font-bold text-pink-600 dark:text-pink-400">{averageLevel}%</span>
+                <div className="mb-1 flex items-center justify-center gap-2">
+                  <TrendingUp className="h-4 w-4 text-slate-700 dark:text-slate-300" />
+                  <span className="text-2xl font-bold text-slate-900 dark:text-white">{averageLevel}%</span>
                 </div>
                 <p className="text-xs text-gray-600 dark:text-gray-400">Avg Proficiency</p>
               </motion.div>
@@ -112,20 +109,13 @@ export default function Skills() {
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-300 relative overflow-hidden ${
+              className={`px-5 py-2.5 rounded-lg font-medium transition-colors duration-300 relative overflow-hidden ${
                 activeCategory === 'all'
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg scale-105'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:scale-105 hover:shadow-md'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700'
               }`}
             >
               <span className="relative z-10">All Skills</span>
-              {activeCategory === 'all' && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600"
-                  transition={{ type: 'spring', duration: 0.5 }}
-                />
-              )}
             </button>
             {skillCategories.map((category) => {
               const categoryCount = skills.filter(s => s.category === category.key).length;
@@ -133,29 +123,22 @@ export default function Skills() {
                 <button
                   key={category.key}
                   onClick={() => setActiveCategory(category.key)}
-                  className={`px-5 py-2.5 rounded-xl font-medium transition-all duration-300 relative overflow-hidden group ${
+                  className={`px-5 py-2.5 rounded-lg font-medium transition-colors duration-300 ${
                     activeCategory === category.key
-                      ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:scale-105 hover:shadow-md'
+                      ? 'bg-slate-900 text-white shadow-sm'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700'
                   }`}
                 >
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className="flex items-center gap-2">
                     {category.name}
-                    <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+                    <span className={`rounded-full px-1.5 py-0.5 text-xs ${
                       activeCategory === category.key
-                        ? 'bg-white/20'
-                        : 'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400'
+                        ? 'bg-white/15 text-white'
+                        : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-200'
                     }`}>
                       {categoryCount}
                     </span>
                   </span>
-                  {activeCategory === category.key && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600"
-                      transition={{ type: 'spring', duration: 0.5 }}
-                    />
-                  )}
                 </button>
               );
             })}
@@ -175,39 +158,24 @@ export default function Skills() {
                 {groupedSkills?.map((group, groupIndex) => {
                   const IconComponent = (Icons as any)[group.skills[0]?.icon] || Icons.Code;
                   
-                  // Gradient variations for each category
-                  const gradients = [
-                    'from-purple-500/10 to-pink-500/10 dark:from-purple-500/5 dark:to-pink-500/5',
-                    'from-blue-500/10 to-cyan-500/10 dark:from-blue-500/5 dark:to-cyan-500/5',
-                    'from-green-500/10 to-emerald-500/10 dark:from-green-500/5 dark:to-emerald-500/5',
-                    'from-orange-500/10 to-red-500/10 dark:from-orange-500/5 dark:to-red-500/5',
-                    'from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/5 dark:to-purple-500/5',
-                    'from-pink-500/10 to-rose-500/10 dark:from-pink-500/5 dark:to-rose-500/5',
-                  ];
-                  
                   return (
                     <motion.div
                       key={group.category.key}
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: groupIndex * 0.1 }}
-                      whileHover={{ y: -8, scale: 1.02 }}
-                      className={`bg-gradient-to-br ${gradients[groupIndex % gradients.length]} backdrop-blur-sm rounded-2xl shadow-lg p-6 border-2 border-gray-200/50 dark:border-gray-700/50 hover:shadow-2xl hover:border-purple-300 dark:hover:border-purple-700 transition-all duration-300`}
+                      className="rounded-xl border border-slate-200 bg-white/80 p-6 shadow-sm transition-colors duration-200 hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900/85 dark:hover:border-slate-600"
                     >
                       <div className="flex items-center gap-3 mb-4 pb-3 border-b border-gray-300 dark:border-gray-600">
-                        <motion.div 
-                          className="p-3 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/50 dark:to-blue-900/50 rounded-xl shadow-md"
-                          whileHover={{ rotate: 360, scale: 1.1 }}
-                          transition={{ duration: 0.6 }}
-                        >
-                          <IconComponent className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                        </motion.div>
+                        <div className="rounded-lg bg-slate-100 p-3 dark:bg-slate-800">
+                          <IconComponent className="h-6 w-6 text-slate-700 dark:text-slate-200" />
+                        </div>
                         <div className="flex-1">
                           <h3 className="font-bold text-xl text-gray-900 dark:text-white">
                             {group.category.name}
                           </h3>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                          <p className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                            <span className="h-1.5 w-1.5 rounded-full bg-slate-500"></span>
                             {group.skills.length} {group.skills.length === 1 ? 'skill' : 'skills'}
                           </p>
                         </div>
@@ -216,23 +184,20 @@ export default function Skills() {
                       <div className="flex flex-wrap gap-2">
                         {group.skills.map((skill) => {
                           // Determine skill level badge and color
-                          const levelBadge = skill.level >= 90 ? '🔥' : skill.level >= 80 ? '⭐' : skill.level >= 70 ? '💎' : '';
                           const levelColor = skill.level >= 90 
-                            ? 'bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800' 
+                            ? 'bg-slate-900 text-white border-slate-900' 
                             : skill.level >= 80 
-                              ? 'bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-900/40 dark:to-cyan-900/40 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800'
-                              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700';
+                              ? 'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700'
+                              : 'bg-white text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700';
                           
                           return (
-                            <motion.span
+                            <span
                               key={skill.name}
-                              whileHover={{ scale: 1.08, y: -2 }}
-                              className={`px-4 py-2 ${levelColor} rounded-xl text-sm font-semibold border-2 hover:shadow-lg transition-all cursor-default inline-flex items-center gap-1.5`}
+                              className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-semibold ${levelColor}`}
                               title={`${skill.level}% proficiency`}
                             >
-                              {levelBadge && <span className="text-base">{levelBadge}</span>}
                               {skill.name}
-                            </motion.span>
+                            </span>
                           );
                         })}
                       </div>
@@ -254,13 +219,14 @@ export default function Skills() {
                   const IconComponent = (Icons as any)[skill.icon] || Icons.Code;
                   
                   // Get skill level color
-                  const levelColor = skill.level >= 90 
-                    ? 'from-purple-600 to-pink-600' 
+                  const levelBarColor = skill.level >= 90 
+                    ? 'bg-sky-700' 
                     : skill.level >= 80 
-                      ? 'from-blue-600 to-cyan-600'
+                      ? 'bg-sky-600'
                       : skill.level >= 70
-                        ? 'from-green-600 to-emerald-600'
-                        : 'from-gray-600 to-gray-500';
+                        ? 'bg-sky-500'
+                        : 'bg-slate-500';
+                  const levelTextColor = skill.level >= 70 ? 'text-sky-700 dark:text-sky-400' : 'text-slate-600 dark:text-slate-400';
                   
                   return (
                     <motion.div
@@ -273,59 +239,39 @@ export default function Skills() {
                         type: 'spring',
                         stiffness: 100
                       }}
-                      whileHover={{ 
-                        scale: 1.05, 
-                        y: -8,
-                        transition: { type: 'spring', stiffness: 400 }
-                      }}
-                      className="group relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all p-6 cursor-pointer border-2 border-gray-200 dark:border-gray-700 hover:border-purple-400 dark:hover:border-purple-600 overflow-hidden"
+                      className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white/80 p-6 shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900/85 dark:hover:border-sky-700"
                     >
-                      {/* Gradient overlay on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-blue-500/0 group-hover:from-purple-500/5 group-hover:to-blue-500/5 rounded-2xl transition-all duration-300" />
-                      
-                      {/* Animated glow effect */}
-                      <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500" />
-                      
                       <div className="relative">
                         <div className="flex items-center gap-3 mb-4">
-                          <motion.div 
-                            className="p-3 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/40 dark:to-blue-900/40 rounded-xl shadow-md"
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.6 }}
-                          >
-                            <IconComponent className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                          </motion.div>
-                          <h4 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors flex-1">
+                          <div className="rounded-lg bg-sky-50 p-3 dark:bg-sky-950/60">
+                            <IconComponent className="h-6 w-6 text-sky-700 dark:text-sky-400" />
+                          </div>
+                          <h4 className="flex-1 text-lg font-bold text-slate-900 transition-colors dark:text-white group-hover:text-sky-700 dark:group-hover:text-sky-400">
                             {skill.name}
                           </h4>
                         </div>
 
                         {/* Progress bar */}
-                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden shadow-inner mb-2">
+                        <div className="mb-2 h-2 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
                           <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
                             transition={{ duration: 1, delay: index * 0.05, ease: "easeOut" }}
                             viewport={{ once: true }}
-                            className={`h-full bg-gradient-to-r ${levelColor} rounded-full relative overflow-hidden`}
+                            className={`relative h-full overflow-hidden rounded-full ${levelBarColor}`}
                           >
-                            <div className="absolute inset-0 bg-white/20 animate-pulse" />
                           </motion.div>
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                             Proficiency Level
                           </span>
-                          <span className={`text-sm font-bold bg-gradient-to-r ${levelColor} bg-clip-text text-transparent`}>
+                          <span className={`text-sm font-bold ${levelTextColor}`}>
                             {skill.level}%
                           </span>
                         </div>
                       </div>
 
-                      {/* Animated corner accent */}
-                      <motion.div 
-                        className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      />
                     </motion.div>
                   );
                 })}
@@ -339,26 +285,13 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 grid md:grid-cols-3 gap-6"
+            className="mt-16 grid gap-6 md:grid-cols-3"
           >
             <motion.div 
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group bg-gradient-to-br from-white to-purple-50 dark:from-gray-800 dark:to-purple-900/20 rounded-2xl shadow-lg p-8 text-center cursor-pointer border border-purple-100 dark:border-purple-800/30"
+              className="group rounded-xl border border-slate-200 bg-white/80 p-8 text-center shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900/85 dark:hover:border-sky-700"
             >
-              <motion.div 
-                className="text-5xl mb-4"
-                animate={{ 
-                  rotate: [0, 10, -10, 0],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3
-                }}
-              >
-                🚀
-              </motion.div>
-              <h4 className="font-bold text-xl mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+              <Rocket className="mx-auto mb-4 h-9 w-9 text-sky-700 dark:text-sky-400" />
+              <h4 className="mb-2 text-xl font-bold text-slate-900 transition-colors dark:text-white group-hover:text-sky-700 dark:group-hover:text-sky-400">
                 Fast Learner
               </h4>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -367,23 +300,10 @@ export default function Skills() {
             </motion.div>
             
             <motion.div 
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/20 rounded-2xl shadow-lg p-8 text-center cursor-pointer border border-blue-100 dark:border-blue-800/30"
+              className="group rounded-xl border border-slate-200 bg-white/80 p-8 text-center shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900/85 dark:hover:border-sky-700"
             >
-              <motion.div 
-                className="text-5xl mb-4"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3
-                }}
-              >
-                💡
-              </motion.div>
-              <h4 className="font-bold text-xl mb-2 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <Lightbulb className="mx-auto mb-4 h-9 w-9 text-sky-700 dark:text-sky-400" />
+              <h4 className="mb-2 text-xl font-bold text-slate-900 transition-colors dark:text-white group-hover:text-sky-700 dark:group-hover:text-sky-400">
                 Problem Solver
               </h4>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -392,23 +312,10 @@ export default function Skills() {
             </motion.div>
             
             <motion.div 
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="group bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-pink-900/20 rounded-2xl shadow-lg p-8 text-center cursor-pointer border border-pink-100 dark:border-pink-800/30"
+              className="group rounded-xl border border-slate-200 bg-white/80 p-8 text-center shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900/85 dark:hover:border-sky-700"
             >
-              <motion.div 
-                className="text-5xl mb-4"
-                animate={{ 
-                  y: [0, -10, 0],
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 3
-                }}
-              >
-                🤝
-              </motion.div>
-              <h4 className="font-bold text-xl mb-2 text-gray-900 dark:text-white group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+              <Handshake className="mx-auto mb-4 h-9 w-9 text-sky-700 dark:text-sky-400" />
+              <h4 className="mb-2 text-xl font-bold text-slate-900 transition-colors dark:text-white group-hover:text-sky-700 dark:group-hover:text-sky-400">
                 Team Player
               </h4>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
