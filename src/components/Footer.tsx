@@ -33,7 +33,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-100/80 text-slate-700 dark:bg-slate-950/85 dark:text-slate-300">
+    <footer id="footer" className="bg-slate-100/80 text-slate-700 dark:bg-slate-950/85 dark:text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-12 grid md:grid-cols-3 gap-12">

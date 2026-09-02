@@ -1,15 +1,14 @@
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import DismissibleLegalPage from '@/components/DismissibleLegalPage';
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen px-6 py-20 text-slate-800 dark:text-slate-200">
+    <>
+      <Navbar />
+      <DismissibleLegalPage>
       <article className="mx-auto max-w-3xl space-y-8 rounded-xl border border-slate-200 bg-white/85 p-8 shadow-sm dark:border-slate-700 dark:bg-slate-900/85">
-        <Link
-          href="/"
-          className="inline-block text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
-          ← Back to home
-        </Link>
-
         <header className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
             Legal
@@ -50,6 +49,15 @@ export default function TermsPage() {
           </p>
         </section>
       </article>
-    </main>
+      <div className="mx-auto mt-8 max-w-3xl">
+        <Link
+          href="/#footer"
+          className="text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
+          ← Back to home
+        </Link>
+      </div>
+      </DismissibleLegalPage>
+      <Footer />
+    </>
   );
 }
