@@ -45,7 +45,10 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsOpen(false);
+      return;
     }
+
+    window.location.href = `/${href}`;
   };
 
   return (
