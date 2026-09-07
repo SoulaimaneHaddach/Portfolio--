@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Github,
@@ -18,6 +19,12 @@ import TiltCard from './TiltCard';
 import RevealText from './RevealText';
 
 export default function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const socialLinks = [
     {
       icon: Github,
@@ -59,7 +66,7 @@ export default function Hero() {
         <div className="mx-auto grid max-w-[1600px] items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={isMounted ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
@@ -77,7 +84,7 @@ export default function Hero() {
 
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.4 }}
                 className="text-5xl font-bold tracking-tight text-slate-900 md:text-6xl lg:text-7xl dark:text-white"
               >
@@ -86,7 +93,7 @@ export default function Hero() {
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.5 }}
                 className="min-h-[40px] text-2xl font-medium text-slate-700 md:text-3xl dark:text-slate-300"
               >
@@ -106,7 +113,7 @@ export default function Hero() {
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.6 }}
               className="text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-300"
             >
@@ -123,7 +130,7 @@ export default function Hero() {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.7 }}
               className="flex flex-wrap gap-4"
             >
@@ -140,7 +147,7 @@ export default function Hero() {
 
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
               transition={{ delay: 0.8 }}
               className="flex gap-4 pt-4"
             >
@@ -154,7 +161,7 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ delay: 0.8 + index * 0.1 }}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
@@ -170,7 +177,7 @@ export default function Hero() {
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={isMounted ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
@@ -189,7 +196,7 @@ export default function Hero() {
                     <motion.div
                       key={stat.label}
                       initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
                       transition={{ delay: 1 + index * 0.15, duration: 0.35 }}
                       className={`absolute ${
                         index === 0 ? 'top-6 -left-2' : index === 1 ? 'bottom-8 -left-2' : 'top-12 -right-2'
@@ -214,7 +221,7 @@ export default function Hero() {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 1.5 }}
           className="absolute bottom left-1/2 -translate-x-1/2"
         >

@@ -45,8 +45,7 @@ export default function RevealText({ text, className = '', delay = 0 }: RevealTe
       className={className}
       variants={container}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      animate="visible"
     >
       {words.map((word, index) => (
         <motion.span
