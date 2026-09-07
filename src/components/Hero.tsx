@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   Github,
@@ -154,7 +155,13 @@ export default function Hero() {
               <div className="relative">
                 <div className="relative mx-auto aspect-square w-full max-w-lg overflow-hidden rounded-[24px] border border-slate-200 bg-stone-100 shadow-sm dark:border-slate-700 dark:bg-slate-900">
                   <div className="flex h-full w-full items-center justify-center overflow-hidden">
-                    <img src="IMG_1404.png" alt="Haddach Soulaimane" className="h-full w-full object-cover" />
+                    <Image
+                      src="/IMG_1404.png"
+                      alt="Haddach Soulaimane"
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 90vw"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
 

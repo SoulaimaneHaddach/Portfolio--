@@ -6,13 +6,11 @@ import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
-// import GlowCursor from '@/components/GlowCursor';
 
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <ScrollProgress />
-      {/* <GlowCursor /> */}
       <Navbar />
       <Hero />
       <Projects />

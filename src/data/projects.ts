@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 export interface Project {
   id: number;
   title: string;
@@ -36,7 +35,7 @@ export const projects: Project[] = [
   liveUrl: "https://weather-oha.netlify.app/",
   githubUrl: "https://github.com/SoulaimaneHaddach/Weather-dashboard",
   category: "frontend",
-  featured: true,
+  featured: false,
 },
   {
     id: 3,
@@ -48,7 +47,7 @@ export const projects: Project[] = [
     liveUrl: "https://takigame.netlify.app",
     githubUrl: "https://github.com/SoulaimaneHaddachTic-Tac-Toe-Game.git",
     category: "frontend",
-    featured: false,
+    featured: true,
   },
   {
     id: 4,
@@ -60,7 +59,7 @@ export const projects: Project[] = [
     liveUrl: "https://oldstore.netlify.app",
     githubUrl: "https://github.com/SoulaimaneHaddach/moharej-store",
     category: "static",
-    featured: true,
+    featured: false,
   },
     {
     id: 5,
@@ -76,16 +75,16 @@ export const projects: Project[] = [
   },
 {
   id: 6,
-  title: "MY Calculator",
-  description: "A simple and responsive calculator built with pure HTML, CSS, and JavaScript.",
+  title: "Mini-Shell",
+  description: "A Unix Shell Built in C",
   longDescription:
-    "MY Calculator is a lightweight and responsive web application developed using pure HTML, CSS, and JavaScript. It performs basic arithmetic operations such as addition, subtraction, multiplication, and division with smooth button interactions and a modern, minimal UI design. This project highlights clean front-end structure, CSS styling, and DOM manipulation techniques without relying on frameworks.",
-  image: ["Calculator.png"],
-  techStack: ["HTML5", "CSS3", "JavaScript"],
-  liveUrl: "https://culios.netlify.app/",
-  githubUrl: "https://github.com/solaymane403/MY-Calculator",
-  category: "frontend",
-  featured: false,
+    "I built a small Unix shell using C to understand what happens behind the terminal when a command is executed.",
+  image: ["MiniShell.png"],
+  techStack: ["C"],
+  liveUrl: "https://github.com/SoulaimaneHaddach/Mini-Shell",
+  githubUrl: "https://github.com/SoulaimaneHaddach/Mini-Shell",
+  category: "static",
+  featured: true,
 },
 
 

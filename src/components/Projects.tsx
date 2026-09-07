@@ -1,17 +1,23 @@
 'use client';
 
-import { ExternalLink, Github, Folder, Star, Search, ChevronLeft, ChevronRight } from 'lucide-react';
-import { projects } from '@/data/projects';
+import Image from 'next/image';
+import { ExternalLink, Github, Folder, Star, Search, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { featuredProjects, projects, type Project } from '@/data/projects';
 import { useEffect, useState, type MouseEvent } from 'react';
 
 export default function Projects() {
   const [filter, setFilter] = useState<string>('all');
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>({});
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const categories = ['all', 'fullstack', 'frontend', 'ai', 'static'];
+  const categories = ['all', 'featured', 'fullstack', 'frontend', 'ai', 'static'];
 
   const filteredProjects =
-    filter === 'all' ? projects : projects.filter((project) => project.category === filter);
+    filter === 'all'
+      ? projects
+      : filter === 'featured'
+        ? featuredProjects
+        : projects.filter((project) => project.category === filter);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,6 +35,17 @@ export default function Projects() {
 
     return () => clearInterval(interval);
   }, [filteredProjects]);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedProject(null);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject]);
 
   const handlePrevImage = (projectId: number, imagesLength: number, e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -112,10 +129,12 @@ export default function Projects() {
                 >
                   <div className="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
                     {imgSrc ? (
-                      <img
+                      <Image
                         src={imgSrc}
                         alt={`${project.title} - Image ${currentIndex + 1}`}
-                        className="h-full w-full object-cover transition-opacity duration-500"
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition-opacity duration-500"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-gray-200 dark:bg-gray-700">
@@ -223,6 +242,14 @@ export default function Projects() {
                     </div>
 
                     <div className="flex gap-4 border-t border-slate-200 pt-4 dark:border-slate-700">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedProject(project)}
+                        className="text-sm font-semibold text-slate-700 transition-colors hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+                      >
+                        Read more
+                      </button>
+
                       {project.liveUrl ? (
                         <a
                           href={project.liveUrl}
@@ -273,6 +300,41 @@ export default function Projects() {
             </div>
           )}
         </div>
+
+        {selectedProject && (
+          <div
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/60 p-4 backdrop-blur-sm"
+            role="presentation"
+            onClick={() => setSelectedProject(null)}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-details-title"
+              className="relative max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-700 dark:bg-slate-900 sm:p-8"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => setSelectedProject(null)}
+                className="absolute right-4 top-4 rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                aria-label="Close project details"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                {selectedProject.category}
+              </p>
+              <h3 id="project-details-title" className="mb-4 pr-10 text-2xl font-bold text-slate-900 dark:text-white">
+                {selectedProject.title}
+              </h3>
+              <p className="leading-7 text-slate-600 dark:text-slate-300">
+                {selectedProject.longDescription || selectedProject.description}
+              </p>
+            </div>
+          </div>
+        )}
 
         <div className="mt-16 text-center">
           <div className="inline-flex flex-col items-center gap-6 rounded-2xl border border-slate-200 bg-slate-50 p-8 dark:border-slate-700 dark:bg-slate-900">

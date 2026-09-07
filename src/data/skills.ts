@@ -6,7 +6,6 @@ export interface Skill {
 }
 
 export const skills: Skill[] = [
-  // ===== FRONTEND =====
   { name: "HTML5", level: 95, icon: "Code2", category: "frontend" },
   { name: "CSS3", level: 90, icon: "Palette", category: "frontend" },
   { name: "JavaScript", level: 88, icon: "FileCode", category: "frontend" },
@@ -16,7 +15,6 @@ export const skills: Skill[] = [
   { name: "UX Design", level: 70, icon: "Layout", category: "frontend" },
   { name: "Registration & Payment Systems", level: 68, icon: "CreditCard", category: "frontend" },
 
-  // ===== BACKEND =====
   { name: "Node.js", level: 78, icon: "Server", category: "backend" },
   { name: "Express", level: 75, icon: "Database", category: "backend" },
   { name: "MongoDB", level: 72, icon: "Database", category: "backend" },
@@ -26,11 +24,9 @@ export const skills: Skill[] = [
   { name: "Java", level: 78, icon: "Coffee", category: "backend" },
   { name: "Spring Boot", level: 75, icon: "Leaf", category: "backend" },
 
-  // ===== CMS & WEB MANAGEMENT =====
   { name: "WordPress", level: 85, icon: "Wordpress", category: "cms" },
   { name: "Kirby CMS", level: 70, icon: "FileStack", category: "cms" },
 
-  // ===== TOOLS & WORKFLOW =====
   { name: "Git", level: 85, icon: "GitBranch", category: "tools" },
   { name: "GitHub", level: 88, icon: "Github", category: "tools" },
   { name: "VS Code", level: 92, icon: "Code", category: "tools" },
@@ -40,11 +36,9 @@ export const skills: Skill[] = [
   { name: "Google Docs/Sheets", level: 75, icon: "FileText", category: "tools" },
   { name: "Figma", level: 65, icon: "Figma", category: "tools" },
 
-  // ===== AI & PYTHON =====
   { name: "Python", level: 70, icon: "Code2", category: "ai" },
   { name: "AI Fundamentals", level: 60, icon: "Bot", category: "ai" },
 
-  // ===== TECHNICAL SUPPORT =====
   { name: "PC Maintenance", level: 90, icon: "Wrench", category: "it" },
   { name: "System Installation & Configuration", level: 85, icon: "Settings", category: "it" },
   { name: "Networking Basics", level: 70, icon: "Globe", category: "it" },

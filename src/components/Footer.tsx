@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Github, Mail, Phone, MapPin, Linkedin, Code2, Instagram  } from 'lucide-react';
 
 export default function Footer() {
@@ -73,13 +74,24 @@ Full-Stack Developer building modern web and mobile applications with a focus on
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="group inline-flex items-center gap-2 text-slate-600 transition-colors duration-200 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-                  >
-                    <span className="h-0.5 w-0 rounded-full bg-slate-700 transition-all duration-200 group-hover:w-4 dark:bg-slate-300"></span>
-                    <span>{link.name}</span>
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link
+                      href={link.href}
+                      prefetch
+                      className="group inline-flex items-center gap-2 text-slate-600 transition-colors duration-200 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                    >
+                      <span className="h-0.5 w-0 rounded-full bg-slate-700 transition-all duration-200 group-hover:w-4 dark:bg-slate-300"></span>
+                      <span>{link.name}</span>
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="group inline-flex items-center gap-2 text-slate-600 transition-colors duration-200 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                    >
+                      <span className="h-0.5 w-0 rounded-full bg-slate-700 transition-all duration-200 group-hover:w-4 dark:bg-slate-300"></span>
+                      <span>{link.name}</span>
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
