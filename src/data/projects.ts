@@ -52,10 +52,10 @@ export const projects: Project[] = [
   {
     id: 4,
     title: "shop",
-    description: "Modern",
-    longDescription: "",
+    description: "The beginning of a love for this world.",
+    longDescription: "It’s one of the first websites I ever built, so I don’t want to improving it I’d rather leave it as it is because it represents where I started and how much I've improved since then.",
     image: ["2021 web-1.png","2021 web-2.png","2021 web-3.png"],
-    techStack: ["HTML5", "CSS3"],
+    techStack: ["HTML5", "CSS3", "2019"],
     liveUrl: "https://oldstore.netlify.app",
     githubUrl: "https://github.com/SoulaimaneHaddach/moharej-store",
     category: "static",
