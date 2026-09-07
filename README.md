@@ -6,7 +6,7 @@ It showcases my skills, projects, and experience as a web developer. The site al
 ## Live Demo
 
 Check out the live version of the site here:  
-🌐 [(https://soulaimane-haddach.netlify.app)](https://soulaimane-haddach.netlify.app)
+🌐 [(https://soulaimane-haddach.netlify.app)]https://soulaimane-haddach.netlify.app
 
 ## Features
 
