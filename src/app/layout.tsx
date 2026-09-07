@@ -6,6 +6,7 @@ import ParticleSystem from "../components/ParticleSystem";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://soulaimane-haddach.netlify.app"),
   title: "Soulaimane Haddach - Full-Stack Developer",
   description:
     "Full-Stack Developer and IT professional with hands-on experience in building modern web applications and managing complete software projects from development to deployment. Experienced in both frontend and backend development, with a strong understanding of software architecture, databases, version control, and Linux environments. I also bring extensive practical experience in computer maintenance, system administration, and technical support. Passionate about solving complex problems, learning new technologies, and building reliable, user-focused solutions.",

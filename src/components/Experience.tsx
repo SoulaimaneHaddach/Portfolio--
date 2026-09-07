@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Code2, Cpu } from 'lucide-react';
+import { Briefcase, Cpu } from 'lucide-react';
 import CounterAnimation from './CounterAnimation';
 
 const experiences = [
@@ -39,52 +39,9 @@ stack: [
 'Troubleshooting'
 ],
 },
-  {
-    icon: GraduationCap,
-    title: 'Education & Certifications',
-    company: 'OFPPT & Online Platforms',
-    period: '2021 - Present',
-    type: 'Education',
-    description: 'Comprehensive education in web development, entrepreneurship, and technical systems. Continuous learning in modern technologies.',
-    stack: [],
-    education: [
-      { 
-        year: '2025', 
-        title: 'Diploma in Web Development', 
-        school: 'OFPPT',
-        icon: Code2,
-        skills: ['HTML', 'CSS', 'JavaScript', 'Web Development']
-      },
-      { 
-        year: '2024', 
-        title: 'Innovation Entrepreneuriale Program', 
-        school: 'OFPPT',
-        icon: Briefcase,
-        skills: ['Entrepreneurship', 'Innovation', 'Project Management']
-      },
-      { 
-        year: '2024', 
-        title: 'Industrial Electrical Maintenance', 
-        school: 'OFPPT',
-        icon: Cpu,
-        skills: ['Electrical Systems', 'Maintenance', 'Troubleshooting']
-      },
-      { 
-        year: '2025+', 
-        title: 'Continuous Learning', 
-        school: 'Various Platforms',
-        icon: GraduationCap,
-        skills: ['C', 'Angular', 'AI Integration', 'DevOps']
-      },
-    ]
-  },
 ];
 
 export default function Experience() {
-  const visibleExperiences = experiences.filter(
-    (experience) => experience.title !== 'Education & Certifications'
-  );
-
   const stats = [
     { number: 5, suffix: '+', label: 'years of hands-on experience' },
     { number: 14, suffix: '+', label: 'Projects Completed' },
@@ -149,7 +106,7 @@ export default function Experience() {
 
         {/* Timeline experiences */}
         <div className="space-y-6">
-          {visibleExperiences.map((exp, index) => {
+          {experiences.map((exp, index) => {
             const IconComponent = exp.icon;
             return (
               <motion.div
@@ -201,73 +158,6 @@ export default function Experience() {
                     <p className="mb-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                       {exp.description}
                     </p>
-
-                    {/* Education Timeline*/}
-                    {'education' in exp && exp.education && (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {exp.education.map((edu: any, idx: number) => {
-                          const EduIcon = edu.icon;
-                          return (
-                            <motion.div
-                              key={idx}
-                              initial={{ opacity: 0, x: -10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.3, delay: idx * 0.1 }}
-                              viewport={{ once: true }}
-                              className="relative flex flex-col gap-3 rounded-lg border border-slate-200 bg-white/80 p-3 transition-all hover:border-slate-300 dark:border-slate-700 dark:bg-slate-900/80 dark:hover:border-slate-600"
-                            >
-                              {/* Year badge in top right corner */}
-                              <div className="absolute top-2 right-2">
-                                <motion.span
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  whileInView={{ opacity: 1, scale: 1 }}
-                                  transition={{ duration: 0.2, delay: 0.2 }}
-                                  viewport={{ once: true }}
-                                  className="rounded-md border border-slate-600 bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-900 shadow-sm"
-                                >
-                                  {edu.year}
-                                </motion.span>
-                              </div>
-
-                              <div className="flex items-start gap-3">
-                                {/* Icon instead of year */}
-                                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-slate-100 shadow-sm transition-colors duration-200 dark:border-slate-700 dark:bg-slate-800">
-                                  <EduIcon className="h-6 w-6 text-black dark:text-slate-100" />
-                                </div>
-                                <div className="flex-1 min-w-0 pr-12">
-                                  <div className="mb-1 text-sm font-semibold leading-tight text-slate-900 dark:text-white">
-                                    {edu.title}
-                                  </div>
-                                  <div className="text-xs text-slate-600 dark:text-slate-300">
-                                    {edu.school}
-                                  </div>
-                                </div>
-                              </div>
-                              
-                              {/* Skills for this education */}
-                              {edu.skills && (
-                                <div className="flex flex-wrap gap-1.5">
-                                  {edu.skills.map((skill: string, skillIdx: number) => {
-                                    return (
-                                      <motion.span
-                                        key={skillIdx}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.2, delay: skillIdx * 0.03 }}
-                                        viewport={{ once: true }}
-                                        className="cursor-default rounded-md border border-slate-700 bg-slate-800 px-2 py-1 text-xs font-medium text-slate-200 transition-all"
-                                      >
-                                        {skill}
-                                      </motion.span>
-                                    );
-                                  })}
-                                </div>
-                              )}
-                            </motion.div>
-                          );
-                        })}
-                      </div>
-                    )}
 
                     {/* Tech Stack with stagger animation and colors*/}
                     {exp.stack.length > 0 && (
