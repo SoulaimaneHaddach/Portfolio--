@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Github,
@@ -19,12 +18,6 @@ import TiltCard from './TiltCard';
 import RevealText from './RevealText';
 
 export default function Hero() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   const socialLinks = [
     {
       icon: Github,
@@ -65,10 +58,7 @@ export default function Hero() {
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-20">
         <div className="mx-auto grid max-w-[1600px] items-center gap-12 lg:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isMounted ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="hero-enter-left space-y-8"
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 shadow-sm dark:border-slate-700 dark:bg-slate-900/80">
               <span className="text-sm font-semibold text-slate-700 dark:text-slate-200">
@@ -83,19 +73,13 @@ export default function Hero() {
               />
 
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.4 }}
-                className="text-5xl font-bold tracking-tight text-slate-900 md:text-6xl lg:text-7xl dark:text-white"
+                className="hero-enter-up hero-delay-400 text-5xl font-bold tracking-tight text-slate-900 md:text-6xl lg:text-7xl dark:text-white"
               >
                 <span className="text-slate-900 dark:text-white">Haddach Soulaimane</span>
               </motion.h1>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.5 }}
-                className="min-h-[40px] text-2xl font-medium text-slate-700 md:text-3xl dark:text-slate-300"
+                className="hero-enter-up hero-delay-500 min-h-[40px] text-2xl font-medium text-slate-700 md:text-3xl dark:text-slate-300"
               >
                 <TypingEffect
                   texts={[
@@ -112,10 +96,7 @@ export default function Hero() {
             </div>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.6 }}
-              className="text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-300"
+              className="hero-enter-up hero-delay-600 text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-300"
             >
               Full-Stack Developer building modern web and mobile applications with{' '}
               <span className="font-semibold text-slate-900 dark:text-white">
@@ -129,10 +110,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-4"
+              className="hero-enter-up hero-delay-700 flex flex-wrap gap-4"
             >
               <MagneticButton href="#contact" className="btn-primary group">
                 <MessageCircle className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -146,10 +124,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex gap-4 pt-4"
+              className="hero-enter hero-delay-800 flex gap-4 pt-4"
             >
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -160,12 +135,9 @@ export default function Hero() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900"
+                    className="hero-enter-up hero-social group relative rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-900"
                     aria-label={social.label}
                   >
                     <Icon className={`h-6 w-6 text-slate-700 transition-colors dark:text-slate-200 ${social.color}`} />
@@ -176,10 +148,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isMounted ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="hero-enter-right relative"
           >
             <TiltCard>
               <div className="relative">
@@ -195,10 +164,7 @@ export default function Hero() {
                   return (
                     <motion.div
                       key={stat.label}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
-                      transition={{ delay: 1 + index * 0.15, duration: 0.35 }}
-                      className={`absolute ${
+                      className={`hero-enter-up hero-stat absolute ${
                         index === 0 ? 'top-6 -left-2' : index === 1 ? 'bottom-8 -left-2' : 'top-12 -right-2'
                       }`}
                     >
@@ -220,10 +186,7 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isMounted ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom left-1/2 -translate-x-1/2"
+          className="hero-enter hero-delay-1500 absolute bottom left-1/2 -translate-x-1/2"
         >
           <div className="flex flex-col items-center gap-2 text-gray-400">
             <span className="text-sm font-medium">Explore My Work</span>
