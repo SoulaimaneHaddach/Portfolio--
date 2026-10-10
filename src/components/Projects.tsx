@@ -8,6 +8,7 @@ import { useEffect, useState, type MouseEvent } from 'react';
 export default function Projects() {
   const [filter, setFilter] = useState<string>('all');
   const [currentImageIndex, setCurrentImageIndex] = useState<Record<number, number>>({});
+  const [expandedTechStacks, setExpandedTechStacks] = useState<Record<number, boolean>>({});
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const categories = ['all', 'featured', 'fullstack', 'frontend', 'ai', 'static'];
@@ -226,7 +227,7 @@ export default function Projects() {
                     </p>
 
                     <div className="mb-4 flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 3).map((tech) => (
+                      {(expandedTechStacks[project.id] ? project.techStack : project.techStack.slice(0, 3)).map((tech) => (
                         <span
                           key={tech}
                           className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
@@ -235,9 +236,18 @@ export default function Projects() {
                         </span>
                       ))}
                       {project.techStack.length > 3 && (
-                        <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-                          +{project.techStack.length - 3}
-                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setExpandedTechStacks((prev) => ({
+                            ...prev,
+                            [project.id]: !prev[project.id],
+                          }))}
+                          aria-expanded={Boolean(expandedTechStacks[project.id])}
+                          aria-label={`${expandedTechStacks[project.id] ? 'Hide' : 'Show'} all technologies for ${project.title}`}
+                          className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-medium text-slate-500 transition-colors hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800"
+                        >
+                          {expandedTechStacks[project.id] ? 'Show less' : `+${project.techStack.length - 3}`}
+                        </button>
                       )}
                     </div>
 
